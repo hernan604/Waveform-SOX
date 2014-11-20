@@ -63,7 +63,7 @@ sub create {
         sprintf( "%.2f", $f );
     } @waveform_data;
 
-    $self->waveform( \@js_waveform_data );
+    $self->waveform( @js_waveform_data );
     $self;
 }
 
