@@ -8,8 +8,6 @@ use Try::Tiny;
 use 5.008_005;
 our $VERSION = '0.01';
 
-#perl clone of https://github.com/aalin/canvas_waveform (ruby)
-
 has waveform => ( is => 'rw' );
 has width => ( is => 'rw', default => sub { 1000 } );
 
@@ -111,6 +109,16 @@ Waveform::SOX is
 =head1 AUTHOR
 
 Hernan Lopes E<lt>hernanlopes@gmail.comE<gt>
+
+=head1 CREDITS
+
+This is a perl clone of the following software:
+
+  https://github.com/aalin/canvas_waveform (ruby)
+
+which derives from:
+    
+  http://github.com/rjp/cdcover/blob/master/cdcover.rb
 
 =head1 COPYRIGHT
 
