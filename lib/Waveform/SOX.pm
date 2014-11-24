@@ -11,6 +11,9 @@ our $VERSION = '0.01';
 has waveform => ( is => 'rw' );
 has width => ( is => 'rw', default => sub { 1000 } );
 
+#the lowest, the fastest to scan and less memory usage. 256 looks fine for me.
+has rate => ( is => 'rw', default => sub { 4000 } );
+
 before 'create' => sub {
     my $self = shift;
     $self->waveform(undef);
@@ -21,7 +24,8 @@ sub create {
     my $music_path = shift;
     return 0 if !-e $music_path or !-f $music_path;
     $music_path = $self->esc_chars( $music_path );
-    my $sox_output = `sox $music_path -t raw -r 4000 -c 1 -L -`;
+    my $rate = $self->rate;
+    my $sox_output = `sox $music_path -t raw -r $rate -c 1 -L -`;
     return 0 if ! $sox_output;
     my @bytes   = unpack( 's*', $sox_output );
     my $buckets = [];
