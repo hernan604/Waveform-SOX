@@ -103,6 +103,7 @@ Waveform::SOX - Creates waveform data points to be used in canvas
   use Waveform::SOX;
   my $wave = Waveform::SOX->new;
   my $audio_file = '/music/some.mp3';
+  $wave->rate(4000); #256 is fine
   $wave->create( $audio_file );
   print $wave->waveform;
 
